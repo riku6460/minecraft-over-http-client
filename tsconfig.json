@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "types": [
+      "node",
+      "socket.io-client"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "minecraft-over-http",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "@types/socket.io-client": "^1.4.32",
+    "typescript": "^3.2.2"
+  }
+}
