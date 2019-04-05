@@ -7,13 +7,24 @@ const config: Config = require('./config.json');
 
 require('net').createServer(socket => {
 
-  const io = require('socket.io-client')(config.address);
+  const WebSocketClient = require('websocket').client;
+  const ws = new WebSocketClient();
+  ws.connect(config.address);
 
-  io.on('disconnect', () => socket.end());
-  socket.on('end', () => io.disconnect());
+  ws.on('connect', connection => {
+    connection.on('close', () => socket.end());
+    socket.on('end', () => connection.close());
 
-  io.on('msg', data => socket.write(data));
+    connection.on('message', data => {
+      if (data.type === 'binary' && data.binaryData instanceof Buffer) {
+        socket.write(data.binaryData);
+      } else {
+        socket.end();
+        connection.close();
+      }
+    });
 
-  socket.on('data', data => io.emit('msg', data));
+    socket.on('data', data => connection.send(data));
+  })
 
 }).listen(config.port);

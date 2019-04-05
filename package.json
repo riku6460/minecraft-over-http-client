@@ -4,11 +4,11 @@
   "main": "app.js",
   "license": "MIT",
   "dependencies": {
-    "socket.io-client": "^2.2.0"
+    "websocket": "^1.0.28"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
-    "@types/socket.io-client": "^1.4.32",
+    "@types/websocket": "^0.0.40",
     "typescript": "^3.2.2"
   }
 }
